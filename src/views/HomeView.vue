@@ -1,14 +1,8 @@
 <script setup lang="ts">
 import Overview from './components/BarView.vue'
-import DateRangePicker from './components/DateRangePicker.vue'
 import MainNav from './components/MainNav.vue'
-import RecentSales from './components/RecentSales.vue'
 import GradedMatch from './components/GradedMatch.vue'
-import Search from './components/Search.vue'
-import TeamSwitcher from './components/TeamSwitcher.vue'
-import UserNav from './components/UserNav.vue'
 
-import { Button } from '@/components/ui/button'
 import {
   Card,
   CardContent,
@@ -26,6 +20,7 @@ import {
 
 import { ref, onMounted } from 'vue';
 import api from '@/services/api';
+import SearchBox from './components/SearchBox.vue'
 
 const data = ref([]);
 
@@ -62,8 +57,7 @@ onMounted(() => {
       <div class="flex h-16 items-center px-4">
         <MainNav class="mx-6" />
         <div class="ml-auto flex items-center space-x-4">
-          <Search />
-          <UserNav />
+          <SearchBox />
         </div>
       </div>
     </div>
