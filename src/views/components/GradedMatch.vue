@@ -1,10 +1,4 @@
 <script setup lang="ts">
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from '@/components/ui/avatar'
-
 
 import { ref, onMounted } from 'vue';
 import api from '@/services/api';
@@ -13,7 +7,7 @@ const data = ref<any[]>([]);
 
 const fetchData = async () => {
   try {
-    const matches = await api.getAllOngingMatches();
+    const matches = await api.getGradedMatches();
     data.value = matches
     console.log(data.value)
   } catch (error) {
