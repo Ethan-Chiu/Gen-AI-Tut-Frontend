@@ -2,16 +2,13 @@
 import { ref, onMounted } from 'vue'
 import api from '@/services/api'
 
-const data = ref([])
-
 const fetchData = async () => {
   try {
     const response = await api.getUserScores()
-    data.value = response.data.map((item: { userId: string; point: number }) => ({
-      name: item.userId,
-      points: item.point
+    series.value[0].data = response.data.map((item: { userId: string; point: number }) => ({
+      x: `Team ${item.userId}`,
+      y: item.point
     }))
-    console.log(data.value)
   } catch (error) {
     console.error('Error fetching data:', error)
   }
@@ -21,15 +18,25 @@ const chartOptions = ref({
   chart: {
     id: 'vuechart-example'
   },
+  plotOptions: {
+    bar: {
+      borderRadius: 4,
+      borderRadiusApplication: 'end',
+      horizontal: true
+    }
+  },
+  fill: {
+    colors: '#0d9488'
+  },
   xaxis: {
-    categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+    type: 'category'
   }
 })
 
 const series = ref([
   {
-    name: 'series-1',
-    data: [30, 40, 35, 50, 49, 60, 70, 91]
+    name: 'Score',
+    data: []
   }
 ])
 
@@ -39,6 +46,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <apexchart width="500" type="bar" :options="chartOptions" :series="series"></apexchart>
-  <!-- <BarChart :data="data" :categories="['points']" :index="'name'" :rounded-corners="4" /> -->
+  <apexchart
+    width="100%"
+    height="100%"
+    type="bar"
+    :options="chartOptions"
+    :series="series"
+  ></apexchart>
 </template>
