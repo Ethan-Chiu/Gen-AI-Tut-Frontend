@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import BarView from './components/BarView.vue'
 import MainNav from './components/MainNav.vue'
+import BarView from './components/BarView.vue'
+import MatchList from './components/MatchList.vue'
 import GradedMatch from './components/GradedMatch.vue'
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -72,7 +73,16 @@ onBeforeUnmount(() => {
                     <BarView />
                   </CardContent>
                 </Card>
-                <div class="w-[30%]">Test</div>
+                <div class="w-[30%]">
+                  <Card class="h-full">
+                    <CardHeader>
+                      <CardTitle>Matches</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <MatchList />
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             </TabsContent>
             <TabsContent value="matches" as-child>

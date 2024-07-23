@@ -1,18 +1,8 @@
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import api from '@/services/api'
 
-export const useCounterStore = defineStore('counter', () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
-  }
-
-  return { count, doubleCount, increment }
-})
-
-export const useItemStore = defineStore('match_list', () => {
+export const useMatchListStore = defineStore('match_list', () => {
   const items = ref<string[]>([])
   const loading = ref(false)
   const error = ref<string | null>(null)
@@ -22,6 +12,7 @@ export const useItemStore = defineStore('match_list', () => {
     error.value = null
     try {
       items.value = await api.getAllOngingMatches()
+      console.log(items.value)
     } catch (err: any) {
       error.value = err.message
     } finally {
