@@ -2,14 +2,10 @@
 import MainNav from './components/MainNav.vue'
 import BarView from './components/BarView.vue'
 import MatchList from './components/MatchList.vue'
-import GradedMatch from './components/GradedMatch.vue'
-
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import api from '@/services/api'
-import SearchBox from './components/SearchBox.vue'
 
 const data = ref([])
 
@@ -50,60 +46,34 @@ onBeforeUnmount(() => {
     </div>
     <!-- Content -->
     <div class="h-full flex flex-col flex-1 space-y-4 p-8 pt-6">
+      <!-- Title -->
       <div class="flex items-center justify-between space-y-2">
         <h2 class="text-3xl font-bold tracking-tight">Dashboard</h2>
       </div>
+      <!-- Content -->
       <div class="space-y-4 h-0 flex-grow">
-        <Tabs default-value="overview" class="h-full">
-          <div class="h-full flex flex-col">
-            <TabsList>
-              <TabsTrigger value="overview"> Teams </TabsTrigger>
-              <TabsTrigger value="matches"> Matches </TabsTrigger>
-            </TabsList>
-            <TabsContent value="overview" class="h-full w-full">
-              <div class="h-full w-full flex space-x-2">
-                <Card class="h-full grow">
-                  <CardHeader>
-                    <CardTitle>Overview</CardTitle>
-                  </CardHeader>
-                  <CardContent class="pl-2 h-[90%]">
-                    <BarView />
-                  </CardContent>
-                </Card>
-                <div class="w-[30%]">
-                  <Card class="h-full">
-                    <CardHeader>
-                      <CardTitle>Matches</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <MatchList />
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            </TabsContent>
-            <TabsContent value="matches" as-child>
-              <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-                <Card class="col-span-3">
-                  <CardHeader>
-                    <CardTitle>On-going Matches</CardTitle>
-                    <CardDescription> On-going Matches </CardDescription>
-                  </CardHeader>
-                  <CardContent> Slot </CardContent>
-                </Card>
-                <Card class="col-span-4">
-                  <CardHeader>
-                    <CardTitle>Graded Matches</CardTitle>
-                    <CardDescription> These matches have been graded. </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <GradedMatch />
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
+        <div class="h-full w-full flex space-x-2">
+          <!-- Left panel -->
+          <Card class="h-full grow">
+            <CardHeader>
+              <CardTitle>Overview</CardTitle>
+            </CardHeader>
+            <CardContent class="pl-2 h-[90%]">
+              <BarView />
+            </CardContent>
+          </Card>
+          <!-- Right panel -->
+          <div class="w-[30%]">
+            <Card class="h-full">
+              <CardHeader>
+                <CardTitle>Matches</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <MatchList />
+              </CardContent>
+            </Card>
           </div>
-        </Tabs>
+        </div>
       </div>
     </div>
   </div>
