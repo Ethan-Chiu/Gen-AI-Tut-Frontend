@@ -5,6 +5,7 @@ import { type Match } from '@/services/types/match'
 
 export const useMatchListStore = defineStore('match_list', () => {
   const items = ref<Match[]>([])
+  const gradedMatches = ref<Match[]>([])
   const loading = ref(false)
   const error = ref<string | null>(null)
 
@@ -13,6 +14,7 @@ export const useMatchListStore = defineStore('match_list', () => {
     error.value = null
     try {
       items.value = await api.getAllMatches()
+      gradedMatches.value = items.value.filter((m) => m.matchStatus === 'GRADED')
       console.log('Item value', items.value)
     } catch (err: any) {
       error.value = err.message
@@ -21,5 +23,5 @@ export const useMatchListStore = defineStore('match_list', () => {
     }
   }
 
-  return { items, loading, error, fetchItems }
+  return { items, gradedMatches, loading, error, fetchItems }
 })
