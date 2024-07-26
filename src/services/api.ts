@@ -1,11 +1,13 @@
 // src/services/api.ts
 import axios from 'axios'
 import type { Match } from './types/match'
-const server = 'http://localhost:3000'
-// const server = "https://gen-ai-tut-backend.up.railway.app"
 
-const username = 'admin'
-const password = 'ethanPassAdmin'
+const server = import.meta.env.VITE_BACKEND_URL
+
+console.log('server url', server)
+
+const username = import.meta.env.VITE_BACKEND_USER
+const password = import.meta.env.VITE_BACKEND_PASSWORD
 const token = btoa(`${username}:${password}`)
 
 const apiClient = axios.create({

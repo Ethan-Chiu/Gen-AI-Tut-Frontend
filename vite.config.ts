@@ -1,9 +1,8 @@
-import path from "path"
+import path from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-import tailwind from "tailwindcss"
-import autoprefixer from "autoprefixer"
+import tailwind from 'tailwindcss'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,19 +13,17 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
-    },
+    }
   },
   css: {
     postcss: {
-      plugins: [tailwind(), autoprefixer()],
-    },
+      plugins: [tailwind()]
+    }
   },
-  plugins: [
-    vue(),
-  ],
+  plugins: [vue()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
+      '@': path.resolve(__dirname, './src')
+    }
   }
 })

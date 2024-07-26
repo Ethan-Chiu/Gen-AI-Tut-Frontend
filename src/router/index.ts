@@ -1,8 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import MatchView from '@/views/MatchView.vue'
-import MatchList from '@/views/components/MatchList.vue'
-import MatchDetail from '@/views/components/MatchDetail.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,17 +6,17 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: () => import('@/views/HomeView.vue')
     },
     {
       path: '/match/:matchId(\\d+)?',
-      component: MatchView,
+      component: () => import('@/views/MatchView.vue'),
       children: [
         {
           path: '',
           components: {
-            list: MatchList,
-            detail: MatchDetail
+            list: () => import('@/views/components/MatchList.vue'),
+            detail: () => import('@/views/components/MatchDetail.vue')
           }
         }
       ]
