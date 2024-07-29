@@ -47,7 +47,11 @@
             </p>
           </div>
           <div v-if="match.result" class="text-4xl font-bold font-mono text-center">
-            {{ match.result.points.find((p) => p.userId === match.firstPlayerId)?.point }}
+            {{
+              (9 +
+                (match.result.points.find((p) => p.userId === match.firstPlayerId)?.point ?? 0)) /
+              2
+            }}
           </div>
         </div>
         <Swords class="h-24 w-24 rounded-full p-6 bg-red-400" />
@@ -61,7 +65,11 @@
             </p>
           </div>
           <div v-if="match.result" class="text-4xl font-bold font-mono text-center">
-            {{ match.result.points.find((p) => p.userId !== match.firstPlayerId)?.point }}
+            {{
+              (9 +
+                (match.result.points.find((p) => p.userId !== match.firstPlayerId)?.point ?? 0)) /
+              2
+            }}
           </div>
         </div>
       </div>
