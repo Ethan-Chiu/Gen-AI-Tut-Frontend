@@ -24,7 +24,9 @@
           <Separator orientation="vertical" />
           <!-- Right panel -->
           <div class="h-full grow">
-            <RouterView name="detail" />
+            <ScrollArea class="h-full">
+              <RouterView name="detail" />
+            </ScrollArea>
           </div>
         </div>
       </div>

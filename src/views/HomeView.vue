@@ -64,7 +64,7 @@ onBeforeUnmount(() => {
             </CardContent>
           </Card>
           <!-- Right panel -->
-          <div class="min-w-[30%] w-[30%]">
+          <div class="min-w-[35%] w-[35%]">
             <Card class="h-full">
               <CardHeader>
                 <CardTitle>Matches</CardTitle>
