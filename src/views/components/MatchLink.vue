@@ -5,7 +5,7 @@
       <div class="flex items-center">
         <div class="flex items-center gap-2">
           <Badge class="font-semibold">
-            {{ match.name }}
+            {{ match.name.substring(0, 30) }}
           </Badge>
           <span
             :class="

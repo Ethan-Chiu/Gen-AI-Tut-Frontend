@@ -64,8 +64,9 @@ const { items, loading, error } = storeToRefs(matchListStore)
 const fetchMatch = () => {
   const matchId = parseInt(route.params.matchId.toString())
   if (matchId) {
-    console.log('items', items.value)
-    match.value = items.value.find((item) => item.id === matchId) ?? null
+    const selectedMatch = items.value.find((item) => item.id === matchId) ?? null
+    selectedMatch?.historyMsgs.sort((a, b) => (a.createAt > b.createAt ? 1 : -1))
+    match.value = selectedMatch
     console.log('match', match.value)
   } else {
     match.value = null

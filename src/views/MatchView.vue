@@ -16,8 +16,10 @@
       <div class="space-y-4 h-0 flex-grow">
         <div class="h-full w-full flex space-x-2">
           <!-- Left panel -->
-          <div class="w-[30%] h-full">
-            <RouterView name="list" />
+          <div class="h-full min-w-[30%] w-[30%]">
+            <ScrollArea class="h-full">
+              <RouterView name="list" />
+            </ScrollArea>
           </div>
           <Separator orientation="vertical" />
           <!-- Right panel -->
@@ -31,6 +33,7 @@
 </template>
 
 <script setup lang="ts">
+import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
 import MainNav from '@/views/components/MainNav.vue'
 </script>

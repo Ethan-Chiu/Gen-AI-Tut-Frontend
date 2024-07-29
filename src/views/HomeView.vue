@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import api from '@/services/api'
+import { ScrollArea } from '@/components/ui/scroll-area'
 
 const data = ref([])
 
@@ -63,13 +64,15 @@ onBeforeUnmount(() => {
             </CardContent>
           </Card>
           <!-- Right panel -->
-          <div class="w-[30%]">
+          <div class="min-w-[30%] w-[30%]">
             <Card class="h-full">
               <CardHeader>
                 <CardTitle>Matches</CardTitle>
               </CardHeader>
-              <CardContent>
-                <MatchList />
+              <CardContent class="h-[90%]">
+                <ScrollArea class="h-full">
+                  <MatchList />
+                </ScrollArea>
               </CardContent>
             </Card>
           </div>
